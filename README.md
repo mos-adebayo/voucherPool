@@ -3,7 +3,7 @@
  A voucher pool is a collection of (voucher) codes that can be used by customers (recipients) to get discounts in a web shop.
 
 **Requirements**
-`php` `composer` `MySQL` 
+`php 7` `composer` `MySQL` 
 
 **Installation**
 * git clone ---
