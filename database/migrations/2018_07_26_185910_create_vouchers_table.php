@@ -16,16 +16,16 @@ class CreateVouchersTable extends Migration
         Schema::create('vouchers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 100)->unique();
-            $table->unsignedInteger('recipientId');
-            $table->date('expiryDate');
-            $table->date('usedOn');
-            $table->unsignedInteger('offerId');
-            $table->unsignedInteger('statusId');
+            $table->unsignedInteger('recipient_id');
+            $table->date('expiry_date');
+            $table->date('used_on');
+            $table->unsignedInteger('offer_id');
+            $table->unsignedInteger('status_id');
             $table->timestamps();
 
-            $table->foreign('recipientId')->references('id')->on('recipients');
-            $table->foreign('statusId')->references('id')->on('status');
-            $table->foreign('offerId')->references('id')->on('offers');
+            $table->foreign('recipient_id')->references('id')->on('recipients');
+            $table->foreign('status_id')->references('id')->on('status');
+            $table->foreign('offer_id')->references('id')->on('offers');
 
         });
     }

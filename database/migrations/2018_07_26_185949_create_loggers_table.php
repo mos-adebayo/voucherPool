@@ -17,7 +17,7 @@ class CreateLoggersTable extends Migration
             $table->increments('id');
             $table->string('action');
             $table->text('description');
-            $table->dateTime('createdAt');
+            $table->dateTime('created_at');
         });
     }
 

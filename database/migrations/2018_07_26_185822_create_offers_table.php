@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration
             $table->increments('id');
             $table->string('name', '100');
             $table->text('description');
-            $table->double('fixedDiscount', '', 2);
+            $table->double('fixed_discount', '', 2);
             $table->timestamps();
             $table->softDeletes();
         });
