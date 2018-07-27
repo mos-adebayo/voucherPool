@@ -14,3 +14,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+/*
+ * Recipient Actions...
+ *
+ */
+$router->get('recipients', 'RecipientController@showAll');
+$router->post('recipient', 'RecipientController@create');
