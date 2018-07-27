@@ -21,3 +21,10 @@ $router->get('/', function () use ($router) {
  */
 $router->get('recipients', 'RecipientController@showAll');
 $router->post('recipient', 'RecipientController@create');
+
+/*
+ * Offer Actions...
+ *
+ */
+$router->get('offers', 'OfferController@showAll');
+$router->post('offer', 'OfferController@create');

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Recipient;
-use Illuminate\Http\Request;
+use App\Offer;
+ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class RecipientController extends Controller
+class OfferController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +26,7 @@ class RecipientController extends Controller
      */
     public function showAll()
     {
-        return response()->json(['data' => Recipient::all()]);
+        return response()->json(['data' => Offer::all()]);
      }
 
     /**
@@ -39,21 +39,24 @@ class RecipientController extends Controller
 
         $validator = Validator::make([
             'name' => $request->input('name'),
-            'email' => $request->input('email')
+            'description' => $request->input('description'),
+            'fixed_discount' => $request->input('fixed_discount')
         ], [
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:recipients',
+            'name' => 'required|max:255|unique:offers',
+            'description' => 'sometimes',
+            'fixed_discount' => 'required|numeric',
         ]);
 
         if($validator->fails()){
             return response()->json(['error' => $validator->messages()], 400);
         }else{
-            $recipient = new Recipient;
-            $recipient->email = $request->input('email');
-            $recipient->name = $request->input('name');
+            $offer = new Offer;
+            $offer->name = $request->input('name');
+            $offer->description = $request->input('description');
+            $offer->fixed_discount = $request->input('fixed_discount');
             try{
-                $recipient->save();
-                return response()->json(['data' => $recipient], 201);
+                $offer->save();
+                return response()->json(['data' => $offer], 201);
             }catch (\Exception $exception){
                 return response()->json(['error' => $exception->getMessage()], 500);
             }
