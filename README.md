@@ -17,3 +17,7 @@
 * php -S localhost:8000 -t public
 
 **Routes**
+
+
+**Test**
+Run `vendor/bin/phpunit` from your terminal
