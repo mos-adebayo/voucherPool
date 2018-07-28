@@ -11,9 +11,8 @@
 * Composer install
 * Create a .env file  using `.env.example` as template
 * Create a Database with the name `voucherPool`
-* Run php artisan migrate  
 * composer dump-autoload
-* php artisan db:seed
+* php artisan migrate:refresh --seed
 * php -S localhost:8000 -t public
 
 **Routes**
