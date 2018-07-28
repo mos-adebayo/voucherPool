@@ -28,3 +28,10 @@ $router->post('recipient', 'RecipientController@create');
  */
 $router->get('offers', 'OfferController@showAll');
 $router->post('offer', 'OfferController@create');
+
+/*
+ * Voucher Actions...
+ *
+ */
+$router->get('vouchers', 'VoucherController@showAll');
+$router->post('voucher', 'VoucherController@create');

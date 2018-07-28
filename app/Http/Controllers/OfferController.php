@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
- use Illuminate\Http\Request;
+use App\Recipient;
+use App\Status;
+use App\Voucher;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class OfferController extends Controller
@@ -20,7 +24,7 @@ class OfferController extends Controller
     }
 
     /**
-     * Retrieve all users.
+     * Retrieve all offers.
      *
      * @return Response
      */
@@ -40,25 +44,56 @@ class OfferController extends Controller
         $validator = Validator::make([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
-            'fixed_discount' => $request->input('fixed_discount')
+            'fixed_discount' => $request->input('fixed_discount'),
+            'expiry_date' => $request->input('expiry_date')
         ], [
             'name' => 'required|max:255|unique:offers',
             'description' => 'sometimes',
             'fixed_discount' => 'required|numeric',
+            'expiry_date' => 'required|date|after:today',
         ]);
 
         if($validator->fails()){
             return response()->json(['error' => $validator->messages()], 400);
         }else{
+            DB::beginTransaction();
+
             $offer = new Offer;
             $offer->name = $request->input('name');
             $offer->description = $request->input('description');
             $offer->fixed_discount = $request->input('fixed_discount');
             try{
-                $offer->save();
-                return response()->json(['data' => $offer], 201);
+                $recipients = Recipient::all();
+                $status = Status::where('name', 'Active')->first();
+
+                if($status === null && $recipients->count() === 0){
+                    return response()->json(['error' => 'Please run the migration command'], 500);
+                }else if($status === null && $recipients->count() > 0){
+                    return response()->json(['error' => 'Please run the migration command. Status table is empty'], 500);
+                }else if($status !== null && $recipients->count() === 0){
+                    return response()->json(['error' => 'No recipient yet!. Please add recipient'], 500);
+                }else{
+                    /*Save Offer*/
+                    $offer->save();
+                    //Generate Voucher For All Recipients
+                    foreach ($recipients as $recipient){
+                        Voucher::create([
+                            'code' => uniqid(),
+                            'offer_id' => $offer->id,
+                            'recipient_id' => $recipient->id,
+                            'expiry_date' => $request->input('expiry_date'),
+                            'status_id' => $status->id,
+                        ]);
+                    }
+                    DB::commit();
+                    return response()->json(['data' => [
+                        'message' => 'Offer created successfully & voucher generated!',
+                        'offer' => $offer
+                    ]], 201);
+                }
             }catch (\Exception $exception){
-                return response()->json(['error' => $exception->getMessage()], 500);
+                DB::rollBack();
+                return response()->json(['error' => 'Sorry unable to create offer. Validate your request and try again!'], 500);
             }
         }
      }

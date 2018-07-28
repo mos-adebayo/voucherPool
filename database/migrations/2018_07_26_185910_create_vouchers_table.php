@@ -18,7 +18,7 @@ class CreateVouchersTable extends Migration
             $table->string('code', 100)->unique();
             $table->unsignedInteger('recipient_id');
             $table->date('expiry_date');
-            $table->date('used_on');
+            $table->date('used_on')->nullable();
             $table->unsignedInteger('offer_id');
             $table->unsignedInteger('status_id');
             $table->timestamps();
