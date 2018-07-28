@@ -19,7 +19,7 @@ class Voucher extends Model {
      */
     public function recipient()
     {
-        return $this->belongsTo('App\Recipient');
+        return $this->belongsTo('App\Recipient', 'recipient_id');
     }
     /**
      * Get the offer of the voucher.

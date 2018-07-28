@@ -35,3 +35,5 @@ $router->post('offer', 'OfferController@create');
  */
 $router->get('vouchers', 'VoucherController@showAll');
 $router->post('voucher', 'VoucherController@create');
+$router->get('vouchers/recipient/{id}', 'VoucherController@showAllVouchersByRecipientId');
+$router->post('vouchers/recipient/email', 'VoucherController@showAllVouchersByEmail');
