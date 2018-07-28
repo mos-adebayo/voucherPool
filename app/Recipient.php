@@ -19,7 +19,7 @@ class Recipient extends Model {
      * @var array
      */
     protected $hidden = [
-        'deleted_at',
+        'deleted_at', 'updated_at'
     ];
 
 }
