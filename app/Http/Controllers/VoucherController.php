@@ -104,7 +104,7 @@ class VoucherController extends Controller
         $validator = Validator::make(
             $request->input(),
             [
-            'email' => 'required',
+            'email' => 'required|email',
             'voucher' => 'required',
         ]);
 
