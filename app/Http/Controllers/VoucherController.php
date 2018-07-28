@@ -71,8 +71,13 @@ class VoucherController extends Controller
             if($recipient === null){
                 return response()->json(['error' => 'Recipient does not exist!'], 400);
             }else{
-                $vouchers  = Voucher::where('recipient_id', $recipient->id)->with('recipient')->get();
-                return response()->json(['data' => $vouchers]);
+                $vouchers  = Voucher::where('recipient_id', $recipient->id)->with('offer')->get();
+                return response()->json([
+                    'data' => [
+                        'recipient' => $recipient,
+                        'vouchers' => $vouchers
+                    ]
+                ]);
             }
         }
      }
