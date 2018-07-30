@@ -151,4 +151,4 @@ View schema via https://github.com/mos-adebayo/voucherPool/blob/master/docs/DB_S
 
 **Postman Collection**
 
-View schema via https://github.com/mos-adebayo/voucherPool/blob/master/docs/DB_Schema.png 
+View schema via https://github.com/mos-adebayo/voucherPool/blob/master/docs/Voucher%20Pool.postman_collection.json
