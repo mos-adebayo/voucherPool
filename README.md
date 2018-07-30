@@ -17,6 +17,16 @@
 
 **Routes**
 
+ -  **_Create Recipient_** 
+ 
+  `POST http://localhost:8000/recipient` 
+    Example Request body:
+    ```javascript
+        {
+            "name" : "John Smith",
+            "email" : "joh.smith@gmail.com"
+        }
+    ```
 
 **Test**
 Run `vendor/bin/phpunit` from your terminal
