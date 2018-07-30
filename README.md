@@ -106,8 +106,8 @@
     Example Request body:
     ```application/json
         {
-            		"email" : "mos.adebayo@gmail.com",
-                	"voucher" : "5b5be0b51821f"
+            "email" : "mos.adebayo@gmail.com",
+            "voucher" : "5b5be0b51821f"
         }
     ```
 

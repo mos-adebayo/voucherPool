@@ -132,6 +132,11 @@ class VoucherController extends Controller
                                 try{
                                     $voucher->save();
                                     return response()->json(['data' => [
+                                        'voucher' => [
+                                            "code" => $voucher->code,
+                                            "used_on" => $voucher->used_on,
+                                            "expiry_date" => $voucher->expiry_date,
+                                        ] ,
                                         'offer' => $voucher->offer,
                                         'message' => 'Voucher used successfully'
                                     ]], 200);
