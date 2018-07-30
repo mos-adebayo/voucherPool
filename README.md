@@ -8,12 +8,12 @@
 
 **Installation**
 * git clone https://github.com/mos-adebayo/voucherPool.git
-* Composer install
+* Run `composer install` from terminal
 * Create a .env file  with your local development details using `.env.example` as template
 * Create a Database with the name `voucherPool` on Mysql
-* composer dump-autoload
-* php artisan migrate:refresh --seed
-* php -S localhost:8000 -t public
+* Run `composer dump-autoload`
+* Run `php artisan migrate:refresh --seed`
+* Run `php -S localhost:8000 -t public`
 
 **Routes**
 
