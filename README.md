@@ -18,8 +18,8 @@
 **Routes**
 
  -  **_Create Recipient_** 
+ `POST http://localhost:8000/recipient` 
  
-  `POST http://localhost:8000/recipient` 
     Example Request body:
     ```javascript
         {
