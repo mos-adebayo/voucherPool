@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "792fba0c-28c8-4bae-b35f-9b0b74049959",
+		"name": "Voucher Pool",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Recipient",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Recipient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\" : \"moses\",\n\"email\" : \"mos.adebayo@gmail.com\"\n }"
+						},
+						"url": {
+							"raw": "http://localhost:8000/recipient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"recipient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recipients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/recipients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"recipients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Offer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Jersey\",\n\t\"description\": \"Christmas Bonus\",\n\t\"fixed_discount\" : 30\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/offer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"offer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Offers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Jersey\",\n\t\"description\": \"Christmas Bonus\",\n\t\"fixed_discount\" : 30\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/offers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"offers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Voucher",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Vouchers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8000/vouchers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vouchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recipient Vouchers By Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"mos.adebayo@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/vouchers/recipient/email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vouchers",
+								"recipient",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Voucher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"mos.adebayo@gmail.com\",\n\t\"voucher\" : \"5b5be0b51821f\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/vouchers/validate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vouchers",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
