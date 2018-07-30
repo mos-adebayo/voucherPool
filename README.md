@@ -7,10 +7,10 @@
 `php 7` `composer` `MySQL` 
 
 **Installation**
-* git clone ---
+* git clone https://github.com/mos-adebayo/voucherPool.git
 * Composer install
-* Create a .env file  using `.env.example` as template
-* Create a Database with the name `voucherPool`
+* Create a .env file  with your local development details using `.env.example` as template
+* Create a Database with the name `voucherPool` on Mysql
 * composer dump-autoload
 * php artisan migrate:refresh --seed
 * php -S localhost:8000 -t public
