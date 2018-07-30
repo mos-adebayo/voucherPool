@@ -148,3 +148,7 @@ Run `vendor/bin/phpunit` from your terminal
 **Database Schema**
 
 View schema via https://github.com/mos-adebayo/voucherPool/blob/master/docs/DB_Schema.png 
+
+**Postman Collection**
+
+View schema via https://github.com/mos-adebayo/voucherPool/blob/master/docs/DB_Schema.png 
